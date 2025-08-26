@@ -139,10 +139,11 @@ const JobPage = ({deleteJob}) => {
   )
 }
 
-const jobLoader = async ({params}) => {
-  const res = await fetch ("https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs")
+const jobLoader = async () => {
+  const res = await fetch("https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs");
   const data = await res.json();
   return data;
-}
+};
+
 
 export {JobPage as default, jobLoader};
