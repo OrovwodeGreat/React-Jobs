@@ -139,11 +139,18 @@ const JobPage = ({deleteJob}) => {
   )
 }
 
-const jobLoader = async () => {
-  const res = await fetch("https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs");
-  const data = await res.json();
-  return data;
-};
+const jobLoader = async ({ params }) => {
+  // If we are running locally, use localhost:8000
+  const isLocalhost = window.location.hostname === "localhost";
 
+  const baseURL = isLocalhost
+    ? "http://localhost:8000" // Local JSON Server
+    : "https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api"; // Hosted API
+
+  const res = await fetch(`${baseURL}/jobs`);
+  const data = await res.json();
+
+  return data;
+}
 
 export {JobPage as default, jobLoader};
