@@ -17,7 +17,7 @@ import EditJobPage from './pages/EditJobPage';
 const App = () => {
   // Add new Job
   const addJob = async (newJob) => {
-    const res = await fetch('/api/jobs', {
+    const res = await fetch('https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ const App = () => {
 
   // Delete Job
   const deleteJob = async (id) => {
-    const res = await fetch(`/api/jobs/${id}`, {
+    const res = await fetch(`https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs"/${id}`, {
       method: 'DELETE',
     });
     return;
