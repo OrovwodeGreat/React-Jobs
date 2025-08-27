@@ -23,30 +23,7 @@ const JobPage = ({deleteJob}) => {
 
     navigate('/jobs');
   }
-  // const [job, setJob] =  useState(null);
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect( () => { 
-  //     const fetchJob = async () => {
-
-  //       try{
-  //       const res = await fetch(`/api/jobs/${id}`)
-  //       const data = await res.json();
-  //       setJob(data);
-  //        console.log("Jobs fetched:", data);
-  //       }
-
-  //       catch (error){
-  //         console.log('Error fectching data', error);
-  //       } 
-  //       finally{
-  //         setLoading(false);
-  //       }
-  //     }
-      
-  //     fetchJob();
-  //   }, []);
-
+  
   
   return (
     <>
