@@ -14,7 +14,7 @@ const JobListing = ({job}) => {
 
 
   const { id } = useParams();
-  const [job, setJob] = useState(null);
+  // const [job, setJob] = useState(null);
 
   useEffect(() => {
     fetch(`https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs/${id}`)
