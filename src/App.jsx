@@ -80,7 +80,7 @@ const App = () => {
           element={<EditJobPage updateJobSubmit={updateJob}/>}
           loader={jobLoader} />
 
-        <Route path='/jobs/:id'
+        <Route path='/jobs/Jobs/:id'
           element={<JobPage
             deleteJob={deleteJob} />}
           loader={jobLoader} />
