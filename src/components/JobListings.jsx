@@ -19,8 +19,9 @@ const JobListings = ({isHome = false}) => {
             ? "/api/jobs?_limit=3"
             : "/api/jobs")
         : (isHome
-            ? "https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs?_limit=3"
-            : "https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs");
+            ? "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs?page=1&limit=3"
+            : "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs");
+;
 // ...existing code...
 
       try {
