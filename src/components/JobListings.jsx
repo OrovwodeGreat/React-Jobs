@@ -12,7 +12,7 @@ const JobListings = ({isHome = false}) => {
 
     const fetchJobs = async () => {
       const isLocalhost = window.location.hostname === "localhost";
-      const apiUrl = isLocalhost
+      const apiUrl = isHome
         ? "http://localhost:8000/jobs?_limit=3"
         : "https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs";
 
