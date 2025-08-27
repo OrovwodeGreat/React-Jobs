@@ -117,8 +117,8 @@ const JobPage = ({deleteJob}) => {
 }
 
 const jobLoader = async ({ params }) => {
-  let params = useParams()
-  const {id} = params;
+  let newParams = useParams(); // Use a different variable name instead of redeclaring params
+  const { id } = newParams;
 
   // If we are running locally, use localhost:8000
   const isLocalhost = window.location.hostname === "localhost";
