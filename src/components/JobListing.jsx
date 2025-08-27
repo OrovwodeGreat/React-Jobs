@@ -19,7 +19,8 @@ const JobListing = ({job}) => {
   useEffect(() => {
     fetch(`https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs/${id}`)
       .then((res) => res.json())
-      .then((data) => setJob(data));
+      .then((data) => setJob(data))
+      .catch(err => console.error(err));
   }, [id]);
 
   if (!job) return <p>Loading...</p>;
@@ -51,7 +52,7 @@ const JobListing = ({job}) => {
                     {job.location}
                   </div>
                   <Link
-                    to={`https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs${job.id}`}
+                    to={`https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs/${job.id}`}
                     className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Read More
