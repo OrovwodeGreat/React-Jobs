@@ -1,7 +1,9 @@
 import {useState} from 'react'
 import {FaMapMarker} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
+import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
+
 const JobListing = ({job}) => {
   const [showFullDescription, setShowFullDescription] = useState (false)
 
@@ -11,7 +13,27 @@ const JobListing = ({job}) => {
     description = description.substring(0,90) + "...";
   }
 
-  const {id} = useParams();
+
+  const { id } = useParams();
+  const [job, setJob] = useState(null);
+
+  useEffect(() => {
+    fetch(`https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs/${id}`)
+      .then((res) => res.json())
+      .then((data) => setJob(data));
+  }, [id]);
+
+  if (!job) return <p>Loading...</p>;
+
+  return (
+    <div className="job-details">
+      <h1>{job.title}</h1>
+      <p>{job.description}</p>
+      <p><strong>Salary:</strong> {job.salary}</p>
+    </div>
+  );
+
+
   return (
   
      <div className="bg-white rounded-xl shadow-md relative">
