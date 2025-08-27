@@ -8,7 +8,10 @@ const JobListings = ({isHome = false}) => {
 
     useEffect( () => { 
       const fetchJobs = async () => {
-      const apiUrl = baseURL = isLocalhost ? "https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs_limit=3" : 'api/jobs';
+      const apiUrl = isLocalhost 
+  ? "http://localhost:8000/jobs?_limit=3" 
+  : "https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs?_limit=3";
+
         
         try{
         const res = await fetch(apiUrl)
