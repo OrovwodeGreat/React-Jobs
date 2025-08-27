@@ -14,37 +14,60 @@ import EditJobPage from './pages/EditJobPage';
 
 
 
+const API_BASE = 'https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs';
+
 const App = () => {
   // Add new Job
   const addJob = async (newJob) => {
-    const res = await fetch('https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newJob),
-    });
-    return;
+    try {
+      const res = await fetch(API_BASE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newJob),
+      });
+      const created = await res.json();
+      // navigate to jobs so the new item is visible (simple reload/navigation)
+      window.location.href = '/jobs';
+      return created;
+    } catch (err) {
+      console.error('Add job failed', err);
+      throw err;
+    }
   };
 
   // Delete Job
   const deleteJob = async (id) => {
-    const res = await fetch(`https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs/${id}`, {
-      method: 'DELETE',
-    });
-    return;
-  }
+    try {
+      const res = await fetch(`${API_BASE}/${id}`, {
+        method: 'DELETE',
+      });
+      if (!res.ok) throw new Error('Delete failed');
+      // go back to jobs list so UI reflects deletion
+      window.location.href = '/jobs';
+      return true;
+    } catch (err) {
+      console.error('Delete job failed', err);
+      throw err;
+    }
+  };
 
   // update Job
   const updateJob = async (job) => {
-     const res = await fetch(`/api/jobs/${job.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify(job),
-    });
-  }
+    try {
+      const res = await fetch(`${API_BASE}/${job.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(job),
+      });
+      const updated = await res.json();
+      // redirect to the job page to show updated data
+      window.location.href = `/jobs/${job.id}`;
+      return updated;
+    } catch (err) {
+      console.error('Update job failed', err);
+      throw err;
+    }
+  };
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -63,10 +86,8 @@ const App = () => {
           loader={jobLoader} />
 
         <Route path='*' element={<NotFoundPage />} />
-
       </Route>
     )
-
   );
 
   return <RouterProvider router={router} />
