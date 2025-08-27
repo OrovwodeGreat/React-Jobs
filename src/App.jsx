@@ -14,7 +14,7 @@ import EditJobPage from './pages/EditJobPage';
 
 
 
-const API_BASE = 'https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs';
+const API_BASE = 'https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs';
 
 const App = () => {
   // Add new Job
