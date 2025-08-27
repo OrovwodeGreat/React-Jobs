@@ -145,7 +145,7 @@ const jobLoader = async ({ params }) => {
 
   const baseURL = isLocalhost
     ? "http://localhost:8000" // Local JSON Server
-    : "https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api"; // Hosted API
+    : "https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/db"; // Hosted API
 
   const res = await fetch(`${baseURL}/jobs`);
   const data = await res.json();
