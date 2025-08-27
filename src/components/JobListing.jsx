@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import {FaMapMarker} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import { useEffect, useState } from "react";
@@ -25,13 +24,6 @@ const JobListing = ({job}) => {
 
   if (!job) return <p>Loading...</p>;
 
-  return (
-    <div className="job-details">
-      <h1>{job.title}</h1>
-      <p>{job.description}</p>
-      <p><strong>Salary:</strong> {job.salary}</p>
-    </div>
-  );
 
 
   return (
