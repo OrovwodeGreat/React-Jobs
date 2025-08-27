@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {FaMapMarker} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 const JobListing = ({job}) => {
   const [showFullDescription, setShowFullDescription] = useState (false)
 
@@ -9,7 +10,10 @@ const JobListing = ({job}) => {
   if(!showFullDescription){
     description = description.substring(0,90) + "...";
   }
+
+  const {id} = useParams();
   return (
+  
      <div className="bg-white rounded-xl shadow-md relative">
               <div className="p-4">
                 <div className="mb-6">
