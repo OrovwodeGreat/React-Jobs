@@ -14,7 +14,7 @@ import EditJobPage from './pages/EditJobPage';
 
 
 
-const API_BASE = 'https://my-json-server.typicode.com/OrovwodeGreat/React-Jobs-Api/jobs';
+const API_BASE = 'http://localhost:5000/jobs';
 
 const App = () => {
   // Add new Job
