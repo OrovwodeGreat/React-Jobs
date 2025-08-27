@@ -19,8 +19,8 @@ const JobListings = ({isHome = false}) => {
             ? "/api/jobs?_limit=3"
             : "/api/jobs")
         : (isHome
-            ? "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs?page=1&limit=3"
-            : "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs");
+            ? "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/React-Jobs-Api/jobs?page=1&limit=3"
+            : "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/React-Jobs-Api/jobs");
 ;
 // ...existing code...
 
