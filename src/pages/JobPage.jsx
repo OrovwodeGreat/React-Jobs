@@ -13,7 +13,7 @@ const JobPage = ({deleteJob}) => {
   const job = useLoaderData();
 
   const onDeleteClick = (jobId) => {
-    const confirm = window.confirm('Are you seure you want to delete this Listing?')
+    const confirm = window.confirm('Are you sure you want to delete this Listing?')
 
     if(!confirm) return;
 
@@ -117,6 +117,9 @@ const JobPage = ({deleteJob}) => {
 }
 
 const jobLoader = async ({ params }) => {
+  let params = useParams()
+  const {id} = params;
+
   // If we are running locally, use localhost:8000
   const isLocalhost = window.location.hostname === "localhost";
 
@@ -124,7 +127,7 @@ const jobLoader = async ({ params }) => {
     ? "http://localhost:8000" // Local JSON Server
     : "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs"; // Hosted API
 
-  const res = await fetch(`${baseURL}/jobs`);
+  const res = await fetch(`${baseURL}/jobs/Jobs/${id}`);
   const data = await res.json();
 
   return data;
