@@ -40,7 +40,7 @@ const EditJobPage = ({updateJobSubmit}) => {
         
                 toast.success('Job updated Successfully');
                 
-                return navigate(`/jobs/${id}`);
+                return navigate(`https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs/${id}`);
             }
 
   return (
