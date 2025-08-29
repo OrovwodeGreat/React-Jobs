@@ -83,7 +83,7 @@ const App = () => {
         <Route path='/jobs/:id'
           element={<JobPage
             deleteJob={deleteJob} />}
-          loader={jobLoader} />
+           />
 
         <Route path='*' element={<NotFoundPage />} />
       </Route>
