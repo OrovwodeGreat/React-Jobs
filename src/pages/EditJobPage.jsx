@@ -11,15 +11,15 @@ const EditJobPage = ({ updateJobSubmit }) => {
   
 
   // State must be initialized safely
-  const [title, setTitle] = useState("");
-  const [type, setType] = useState("");
-  const [location, setLocation] = useState("");
-  const [description, setDescription] = useState("");
-  const [salary, setSalary] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [companyDescription, setCompanyDescription] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
-  const [contactPhone, setContactPhone] = useState("");
+//   const [title, setTitle] = useState("");
+//   const [type, setType] = useState("");
+//   const [location, setLocation] = useState("");
+//   const [description, setDescription] = useState("");
+//   const [salary, setSalary] = useState("");
+//   const [companyName, setCompanyName] = useState("");
+//   const [companyDescription, setCompanyDescription] = useState("");
+//   const [contactEmail, setContactEmail] = useState("");
+//   const [contactPhone, setContactPhone] = useState("");
 
 
   
