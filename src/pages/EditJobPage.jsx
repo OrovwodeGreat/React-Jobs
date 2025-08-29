@@ -5,39 +5,23 @@ import { useParams, useLoaderData, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const EditJobPage = ({ updateJobSubmit }) => {
-  const job = useLoaderData();
-  const { id } = useParams();
-  const navigate = useNavigate();
-  
+      const job = useLoaderData();
 
   // State must be initialized safely
-//   const [title, setTitle] = useState("");
-//   const [type, setType] = useState("");
-//   const [location, setLocation] = useState("");
-//   const [description, setDescription] = useState("");
-//   const [salary, setSalary] = useState("");
-//   const [companyName, setCompanyName] = useState("");
-//   const [companyDescription, setCompanyDescription] = useState("");
-//   const [contactEmail, setContactEmail] = useState("");
-//   const [contactPhone, setContactPhone] = useState("");
+  const [title, setTitle] = useState(job.title);
+  const [type, setType] = useState(job.type);
+  const [location, setLocation] = useState(job.location);
+  const [description, setDescription] = useState(job.description);
+  const [salary, setSalary] = useState(job.salary);
+  const [companyName, setCompanyName] = useState(job.company.name);
+  const [companyDescription, setCompanyDescription] = useState(job.company.description);
+  const [contactEmail, setContactEmail] = useState(job.company.contactEmail);
+  const [contactPhone, setContactPhone] = useState(job.company.contactPhone);
 
 
   
   // ✅ When job is available, update state
-  useEffect(() => {
-    
-    if (job) {
-      setTitle(job.title);
-      setType(job.type);
-      setLocation(job.location);
-      setDescription(job.description);
-      setSalary(job.salary);
-      setCompanyName(job.company.name);
-      setCompanyDescription(job.company.description);
-      setContactEmail(job.company.contactEmail);
-      setContactPhone(job.company.contactPhone);
-    }
-  }, [job]);
+  
 
   const submitForm = (e) => {
     e.preventDefault();
