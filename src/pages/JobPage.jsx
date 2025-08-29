@@ -1,6 +1,6 @@
 // import {useState, useEffect} from 'react' 
-import { useParams, useLoaderData, useNavigate } from 'react-router-dom';
-import Spinner from '../components/Spinner';
+import {  useLoaderData, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
 import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { FaMapMarker } from 'react-icons/fa';
@@ -9,8 +9,13 @@ import { toast } from 'react-toastify';
 
 const JobPage = ({deleteJob}) => {
   const navigate = useNavigate()
-  const job = useLoaderData();
+  const jobs = useLoaderData();
+  const [job, setJob] = useState(jobs);
 
+    useEffect(() => {
+    setJob(job); // ✅ Now setJob is defined
+  }, [job]);
+  
   const onDeleteClick = (jobId) => {
     const confirm = window.confirm('Are you sure you want to delete this Listing?')
 
