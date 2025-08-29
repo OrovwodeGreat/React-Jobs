@@ -1,30 +1,58 @@
 // import {useState, useEffect} from 'react' 
 import {  useLoaderData, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { FaMapMarker } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const JobPage = ({deleteJob}) => {
-  const navigate = useNavigate()
-  const jobs = useLoaderData();
-  const [job, setJob] = useState(jobs);
+const JobPage = () => {
+  const { id } = useParams(); // ✅ Grab job id from route
+  const [job, setJob] = useState(null); // ✅ State to hold job details
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-   
-  const onDeleteClick = (jobId) => {
-    const confirm = window.confirm('Are you sure you want to delete this Listing?')
+  useEffect(() => {
+    const fetchJob = async () => {
+      try {
+        const res = await fetch(
+          `https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs/${id}`
+        );
 
-    if(!confirm) return;
+        if (!res.ok) {
+          throw new Error("Failed to fetch job");
+        }
+
+        const data = await res.json();
+        setJob(data); // ✅ correctly calling setJob from useState
+      } catch (err) {
+        console.error("Error fetching job:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+
+
+    fetchJob();
+  }, [id]);
+
+    const onDeleteClick = (jobId) => {
+    const confirm = window.confirm('Are you sure you want to delete this Listing?');
+    if (!confirm) return;
 
     deleteJob(jobId);
-
     toast.success('Job deleted successfully');
-
     navigate('/jobs');
-  }
-  
+
+  if (loading) return <p className="text-center mt-10">Loading job...</p>;
+  if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
+
   
   return (
     <>
@@ -116,14 +144,10 @@ const JobPage = ({deleteJob}) => {
     </>
   )
 }
+}
 
 const jobLoader = async ({ params }) => {
   const { id } = params;
-  
-   useEffect(() => {
-    setJob(jobs); // ✅ Now setJob is defined
-  }, [jobs]);
-
 
   // If we are running locally, use localhost:8000
   const isLocalhost = window.location.hostname === "localhost";
@@ -141,4 +165,4 @@ const jobLoader = async ({ params }) => {
   return data;
 }
 
-export {JobPage as default, jobLoader};
+export default JobPage
