@@ -23,15 +23,15 @@ const EditJobPage = ({updateJobSubmit}) => {
   // ✅ When job is available, update state
   useEffect(() => {
     if (job) {
-      setTitle(job.title || "");
-      setType(job.type || "");
-      setLocation(job.location || "");
-      setDescription(job.description || "");
-      setSalary(job.salary || "");
-      setCompanyName(job.company?.name || "");
-      setCompanyDescription(job.company?.description || "");
-      setContactEmail(job.company?.contactEmail || "");
-      setContactPhone(job.company?.contactPhone || "");
+      setTitle(job.title);
+      setType(job.type);
+      setLocation(job.location);
+      setDescription(job.description);
+      setSalary(job.salary);
+      setCompanyName(job.company.name);
+      setCompanyDescription(job.company.description);
+      setContactEmail(job.company.contactEmail);
+      setContactPhone(job.company.contactPhone);
     }
   }, [job]);
 
