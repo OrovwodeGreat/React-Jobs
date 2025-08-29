@@ -12,10 +12,7 @@ const JobPage = ({deleteJob}) => {
   const jobs = useLoaderData();
   const [job, setJob] = useState(jobs);
 
-    useEffect(() => {
-    setJob(jobs); // ✅ Now setJob is defined
-  }, [jobs]);
-
+   
   const onDeleteClick = (jobId) => {
     const confirm = window.confirm('Are you sure you want to delete this Listing?')
 
@@ -122,6 +119,11 @@ const JobPage = ({deleteJob}) => {
 
 const jobLoader = async ({ params }) => {
   const { id } = params;
+  
+   useEffect(() => {
+    setJob(jobs); // ✅ Now setJob is defined
+  }, [jobs]);
+
 
   // If we are running locally, use localhost:8000
   const isLocalhost = window.location.hostname === "localhost";
