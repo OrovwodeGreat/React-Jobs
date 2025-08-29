@@ -18,7 +18,7 @@ const EditJobPage = ({ updateJobSubmit }) => {
   const [contactEmail, setContactEmail] = useState(job.company.contactEmail);
   const [contactPhone, setContactPhone] = useState(job.company.contactPhone);
 
-
+ const {id} = useParams()
   
   // ✅ When job is available, update state
   
