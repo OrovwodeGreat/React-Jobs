@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 
 const JobPage = ({deleteJob}) => {
   const navigate = useNavigate()
-  const {id} = useParams();
   const job = useLoaderData();
 
   const onDeleteClick = (jobId) => {
@@ -123,8 +122,8 @@ const jobLoader = async ({ params }) => {
   const isLocalhost = window.location.hostname === "localhost";
 
   const baseURL = isLocalhost
-    ? "http://localhost:8000" // Local JSON Server
-    : "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/"; // Hosted API
+    ? "http://localhost:8000/jobs" // Local JSON Server
+    : "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs"; // Hosted API
 
   const res = await fetch(`${baseURL}/${id}`);
   if(!res.ok) {
