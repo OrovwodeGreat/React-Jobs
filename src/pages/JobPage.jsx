@@ -1,7 +1,3 @@
-// import {useState, useEffect} from 'react' 
-import {  useLoaderData, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { FaMapMarker } from 'react-icons/fa';
