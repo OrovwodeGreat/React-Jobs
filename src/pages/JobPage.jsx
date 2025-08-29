@@ -117,19 +117,21 @@ const JobPage = ({deleteJob}) => {
 }
 
 const jobLoader = async ({ params }) => {
-  let newParams = useParams(); // Use a different variable name instead of redeclaring params
-  const { id } = newParams;
+  const { id } = params;
 
   // If we are running locally, use localhost:8000
   const isLocalhost = window.location.hostname === "localhost";
 
   const baseURL = isLocalhost
     ? "http://localhost:8000" // Local JSON Server
-    : "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs/Jobs"; // Hosted API
+    : "https://68aed6f8b91dfcdd62ba76ee.mockapi.io/jobs"; // Hosted API
 
-  const res = await fetch(`${baseURL}/jobs/Jobs/${id}`);
+  const res = await fetch(`${baseURL}/${id}`);
+  if(!res.ok) {
+    throw new Error("Failed to fetch job data");
+  }
+
   const data = await res.json();
-
   return data;
 }
 
