@@ -13,9 +13,9 @@ const JobPage = ({deleteJob}) => {
   const [job, setJob] = useState(jobs);
 
     useEffect(() => {
-    setJob(job); // ✅ Now setJob is defined
-  }, [job]);
-  
+    setJob(jobs); // ✅ Now setJob is defined
+  }, [jobs]);
+
   const onDeleteClick = (jobId) => {
     const confirm = window.confirm('Are you sure you want to delete this Listing?')
 
