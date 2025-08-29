@@ -78,7 +78,7 @@ const App = () => {
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
 
         <Route path='/edit-job/:id'
-          element={<EditJobPage updateJobSubmit={updateJob}/>}
+          element={<EditJobPage updateJobSubmit={updateJob} loader={loader}/>}
            />
 
         <Route path='/jobs/:id'

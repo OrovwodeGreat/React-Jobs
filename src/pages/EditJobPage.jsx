@@ -8,6 +8,7 @@ const EditJobPage = ({ updateJobSubmit }) => {
   const job = useLoaderData();
   const { id } = useParams();
   const navigate = useNavigate();
+  
 
   // State must be initialized safely
   const [title, setTitle] = useState("");
@@ -20,8 +21,11 @@ const EditJobPage = ({ updateJobSubmit }) => {
   const [contactEmail, setContactEmail] = useState("");
   const [contactPhone, setContactPhone] = useState("");
 
+
+  
   // ✅ When job is available, update state
   useEffect(() => {
+    
     if (job) {
       setTitle(job.title);
       setType(job.type);
@@ -37,6 +41,7 @@ const EditJobPage = ({ updateJobSubmit }) => {
 
   const submitForm = (e) => {
     e.preventDefault();
+
 
     const updatedJob = {
       id,
