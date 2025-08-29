@@ -8,7 +8,7 @@ import MainLayout from './layouts/MainLayout';
 import HomePages from './pages/HomePages';
 import JobsPage from './pages/JobsPage';
 import NotFoundPage from './pages/NotFoundPage';
-import JobPage, { jobLoader } from './pages/JobPage';
+import JobPage from './pages/JobPage';
 import AddJobPage from './pages/AddJobPage';
 import EditJobPage from './pages/EditJobPage';
 
@@ -52,22 +52,23 @@ const App = () => {
   };
 
   // update Job
-  const updateJob = async (job) => {
-    try {
-      const res = await fetch(`${API_BASE}/${job.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(job),
-      });
-      const updated = await res.json();
-      // redirect to the job page to show updated data
-      window.location.href = `/jobs/${job.id}`;
-      return updated;
-    } catch (err) {
-      console.error('Update job failed', err);
-      throw err;
-    }
-  };
+ const updateJob = async (job) => {
+  try {
+    const res = await fetch(`${API_BASE}/${job.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(job),
+    });
+
+    if (!res.ok) throw new Error("Failed to update job");
+
+    const updated = await res.json();
+    return updated; // return updated job
+  } catch (err) {
+    console.error("Update job failed", err);
+    throw err;
+  }
+};
 
   const router = createBrowserRouter(
     createRoutesFromElements(
